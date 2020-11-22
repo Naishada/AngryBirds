@@ -11,6 +11,7 @@ var pig1,pig2,pig3;
 var log1,log2,log3,log4;
 var bird;
 var bg;
+var platform;
 //restitution
 
 function preload(){
@@ -27,6 +28,7 @@ function setup() {
   box2 = new Box(500,350,60,60);
   box3 = new Box(700,280,60,60);
   box4 = new Box(500,280,60,60);
+  platform = new Ground(200,300,400,200);
   ground = new Ground(600,390,1200,20);
   pig1 = new Pig(600,350);
   pig2 = new Pig(600,280);
@@ -47,6 +49,7 @@ function draw() {
   box2.display();
   box3.display();
   box4.display();
+  platform.display();
   ground.display();
   pig1.display();
   pig2.display();
