@@ -3,6 +3,7 @@
 const Engine = Matter.Engine
 const World = Matter.World
 const Bodies = Matter.Bodies
+const Constraint = Matter.Constraint
 
 var engine, world
 var ground;
@@ -12,6 +13,8 @@ var log1,log2,log3,log4;
 var bird;
 var bg;
 var platform;
+var chain;
+var constrainedLog;
 //restitution
 
 function preload(){
@@ -39,6 +42,10 @@ function setup() {
   log4 = new Log(650,180,150,-PI/4);
   bird = new Bird(100,100);
   // PI radians = 180 degrees
+
+  constrainedLog = new Log(200,200,100,0)
+
+  chain = new Chain(bird.body,constrainedLog.body)
 }
 
 function draw() {
@@ -59,5 +66,8 @@ function draw() {
   log3.display();
   log4.display();
   bird.display();
-  drawSprites();
+  chain.display();
+  constrainedLog.display();
+
+      drawSprites();
 }
