@@ -14,7 +14,7 @@ var bird;
 var bg;
 var platform;
 var chain;
-var constrainedLog;
+
 //restitution
 
 function preload(){
@@ -31,21 +31,19 @@ function setup() {
   box2 = new Box(500,350,60,60);
   box3 = new Box(700,280,60,60);
   box4 = new Box(500,280,60,60);
-  platform = new Ground(200,300,400,200);
+  platform = new Ground(150,330,300,100);
   ground = new Ground(600,390,1200,20);
   pig1 = new Pig(600,350);
   pig2 = new Pig(600,280);
   pig3 = new Pig(600,220);
   log1 = new Log(600,320,300,PI/2);
   log2 = new Log(600,250,300,PI/2);
-  log3 = new Log(550,180,150,PI/4);
+  log3 = new Log(560,180,150,PI/4);
   log4 = new Log(650,180,150,-PI/4);
   bird = new Bird(100,100);
   // PI radians = 180 degrees
 
-  constrainedLog = new Log(200,200,100,0)
-
-  chain = new Chain(bird.body,constrainedLog.body)
+  chain = new Slingshot(bird.body,{x:200,y:100});
 }
 
 function draw() {
@@ -67,7 +65,12 @@ function draw() {
   log4.display();
   bird.display();
   chain.display();
-  constrainedLog.display();
 
       drawSprites();
+}
+function mouseDragged(){
+  Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
+}
+function mouseReleased(){
+  chain.fly();
 }

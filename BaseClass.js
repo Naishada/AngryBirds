@@ -4,7 +4,8 @@ class Base{
         this.height = height
         var options = {
             restitution : 0.8,
-            friction : 0.9
+            friction : 1.2,
+            density : 0.8
         }
         this.body = Bodies.rectangle(x,y,this.width,this.height,options)
         World.add(world,this.body)
